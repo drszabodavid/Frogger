@@ -1,1 +1,78 @@
----
+.game-cell {
+    cursor: pointer;
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    color: #222;
+}
+
+.game-cell-swamp{
+    cursor: pointer;
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    background-image: url('/static/images/swamp.png');
+}
+
+.game-cell-grass{
+    cursor: pointer;
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    background-image: url('/static/images/swampwithgrass.png');
+}
+
+.game-cell-water{
+    cursor: pointer;
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    background-image: url('/static/images/water.png');
+}
+
+.game-cell-shore {
+    cursor: pointer;
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    background-color: limegreen;
+}
+
+.game-cell-road2 {
+    cursor: pointer;
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    background-image: url('/static/images/road.png');
+}
+
+.game-cell-road {
+    cursor: pointer;
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    background-color: black;
+}
+
+#game-field {
+    display: inline-block;
+    text-align: center;
+    padding: 5%;
+    background-color: #fff;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, .9);
+    box-sizing: border-box;
+}

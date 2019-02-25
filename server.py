@@ -1,11 +1,15 @@
 from flask import Flask, render_template, request
 
-
 app = Flask(__name__)
 
 
+@app.route('/game')
+def run_game():
+    return render_template('game.html')
+
+
 @app.route('/')
-def hello_world():
+def index():
     return render_template('index.html')
 
 
