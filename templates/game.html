@@ -8,60 +8,22 @@
 </head>
 <body>
 <h1>Frogger</h1>
-
 <div id="game-field">
-    {% for row in range(1) %}
-        <div>
-        {% for col in range(10) %}
-            {% if col % 2 == 0 %}
-                <div class="game-cell-swamp"></div>
-            {% else %}
-                <div class="game-cell-grass"></div>
-            {% endif %}
-        {% endfor %}
-    {% endfor %}
-    </div>
-    {% for row in range(5) %}
-        <div>
-            {% for col in range(10) %}
-                <div class="game-cell-water"></div>
-            {% endfor %}
-        </div>
-    {% endfor %}
-     {% for row in range(1) %}
-        <div>
-        {% for col in range(10) %}
-                <div class="game-cell-shore"></div>
-        {% endfor %}
-    {% endfor %}
-{% for row in range(1) %}
-        <div>
-            {% for col in range(10) %}
-                <div class="game-cell-road"></div>
-            {% endfor %}
-        </div>
-    {% endfor %}
-{% for row in range(3) %}
-        <div>
-            {% for col in range(10) %}
-                <div class="game-cell-road2"></div>
-            {% endfor %}
-        </div>
-    {% endfor %}
-{% for row in range(1) %}
-        <div>
-            {% for col in range(10) %}
-                <div class="game-cell-road"></div>
-            {% endfor %}
-        </div>
-    {% endfor %}
-{% for row in range(1) %}
-        <div>
-        {% for col in range(10) %}
-                <div class="game-cell-shore"></div>
-        {% endfor %}
-    {% endfor %}
-
+    <div id="upperRow"></div>
+    <div id="row0"></div>
+    <div id="row1"></div>
+    <div id="row2"></div>
+    <div id="row3"></div>
+    <div id="row4"></div>
+    <div id="row5"></div>
+    <div id="row6"></div>
+    <div id="row7"></div>
+    <div id="row8"></div>
+    <div id="row9"></div>
+    <div id="row10"></div>
+    <div id="row11"></div>
+    <div id="row12"></div>
+    <div id="frog"></div>
 </div>
 
 

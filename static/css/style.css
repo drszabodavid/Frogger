@@ -1,5 +1,4 @@
 .game-cell {
-    cursor: pointer;
     display: table-cell;
     width: 50px;
     height: 50px;
@@ -8,8 +7,7 @@
     color: #222;
 }
 
-.game-cell-swamp{
-    cursor: pointer;
+.game-cell-swamp {
     display: table-cell;
     width: 50px;
     height: 50px;
@@ -18,8 +16,7 @@
     background-image: url('/static/images/swamp.png');
 }
 
-.game-cell-grass{
-    cursor: pointer;
+.game-cell-grass {
     display: table-cell;
     width: 50px;
     height: 50px;
@@ -28,8 +25,7 @@
     background-image: url('/static/images/swampwithgrass.png');
 }
 
-.game-cell-water{
-    cursor: pointer;
+.game-cell-water {
     display: table-cell;
     width: 50px;
     height: 50px;
@@ -39,7 +35,6 @@
 }
 
 .game-cell-shore {
-    cursor: pointer;
     display: table-cell;
     width: 50px;
     height: 50px;
@@ -49,7 +44,6 @@
 }
 
 .game-cell-road2 {
-    cursor: pointer;
     display: table-cell;
     width: 50px;
     height: 50px;
@@ -59,7 +53,6 @@
 }
 
 .game-cell-road {
-    cursor: pointer;
     display: table-cell;
     width: 50px;
     height: 50px;
@@ -72,7 +65,21 @@
     display: inline-block;
     text-align: center;
     padding: 5%;
-    background-color: #fff;
+    background-color: white;
     box-shadow: 0 1px 5px rgba(0, 0, 0, .9);
     box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
 }
+
+#frog {
+    width: 45px;
+    height: 45px;
+    background-color: white;
+    position: absolute;
+    bottom:55px;
+    right:300px;
+}
+
+
