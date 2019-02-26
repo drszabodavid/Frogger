@@ -62,24 +62,113 @@
 }
 
 #game-field {
+    margin: auto;
     display: inline-block;
     text-align: center;
-    padding: 5%;
     background-color: white;
     box-shadow: 0 1px 5px rgba(0, 0, 0, .9);
     box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
+    position: absolute;
+    overflow: hidden;
 }
 
 #frog {
-    width: 45px;
-    height: 45px;
-    background-color: white;
+    width: 40px;
+    height: 40px;
+    background-color: firebrick;
     position: absolute;
     bottom:55px;
     right:300px;
 }
 
+#game {
+    padding: 30px;
+}
+
+#ThreeLongLog {
+    display: table-cell;
+    width: 150px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    position: absolute;
+    visibility: visible;
+    bottom:500px;
+    right:500px;
+    background-image: url('/static/images/threeLongLog.png');
+}
+#ThreeLongLog2 {
+    display: table-cell;
+    width: 150px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    position: absolute;
+    visibility: visible;
+    bottom:500px;
+    right:500px;
+    background-image: url('/static/images/threeLongLog.png');
+}
+#ThreeLongLog3 {
+    display: table-cell;
+    width: 150px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    position: absolute;
+    visibility: visible;
+    bottom:500px;
+    right:500px;
+    background-image: url('/static/images/threeLongLog.png');
+}
+#FourLongLog {
+    display: table-cell;
+    width: 200px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    position: absolute;
+    visibility: visible;
+    bottom:450px;
+    right:450px;
+    background-image: url('/static/images/fourLongLog.png');
+ }
+#FourLongLog2 {
+    display: table-cell;
+    width: 200px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    position: absolute;
+    visibility: visible;
+    bottom:450px;
+    right:450px;
+    background-image: url('/static/images/fourLongLog.png');
+ }
+
+#ThreeLongLogReversed {
+    display: table-cell;
+    width: 150px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    position: absolute;
+    visibility: visible;
+    bottom:400px;
+    right:400px;
+    background-image: url('/static/images/threeLongLogReversed.png');
+ }
+
+#ThreeLongLogReversed2 {
+    display: table-cell;
+    width: 150px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    position: absolute;
+    visibility: visible;
+    bottom:400px;
+    right:400px;
+    background-image: url('/static/images/threeLongLogReversed.png');
+ }
 
