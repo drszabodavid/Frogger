@@ -92,7 +92,7 @@ function LogMoveReversed(logname, startposition, speed) {
 }
 
 createMap();
-
+let waterTiles = document.getElementsByClassName("game-cell-water");
 
 
 LogMove("ThreeLongLog", -900, 12);
@@ -111,27 +111,31 @@ function move(event) {
             winCondition()
         }
         frog.style.bottom = verticalPosition + "px";
-    }
-    else if (event.which === 40) {
+    } else if (event.which === 40) {
         verticalPosition -= 50;
         if (verticalPosition <= -45) {
             verticalPosition += 50
         }
         frog.style.bottom = verticalPosition + "px";
-    }
-    else if (event.which === 37) {
-        horisontalPosition+= 50;
+    } else if (event.which === 37) {
+        horisontalPosition += 50;
         if (horisontalPosition >= 550) {
             horisontalPosition -= 50
         }
         frog.style.right = horisontalPosition + "px";
-    }
-    else if (event.which === 39) {
-        horisontalPosition-= 50;
+    } else if (event.which === 39) {
+        horisontalPosition -= 50;
         if (horisontalPosition <= -50) {
             horisontalPosition += 50
         }
         frog.style.right = horisontalPosition + "px";
+    }
+    console.log("moved");
+    for (let water of waterTiles) {
+        if (isCollapsed(frog, water)) {
+            console.log("colliding");
+            dieCondition()
+        }
     }
 }
 
@@ -145,3 +149,48 @@ function winCondition() {
 
 
 document.onkeydown = move;
+
+
+// ##################################################### COLLIDE #################################################### //
+
+
+function dieCondition() {
+    alert("PFFF! What kind of frog you are?! Can't you swim?! Nooob!");
+    verticalPosition = 5;
+    horisontalPosition = 250;
+    frog.style.right = horisontalPosition + "px";
+}
+
+
+// var is_colliding = function( frog, waterElement ) {
+// 	// Div 1 data
+// 	var d1_offset             = frog.offset();
+// 	var d1_height             = frog.outerHeight( true );
+// 	var d1_width              = frog.outerWidth( true );
+// 	var d1_distance_from_top  = d1_offset.top + d1_height;
+// 	var d1_distance_from_left = d1_offset.left + d1_width;
+//
+// 	// Div 2 data
+// 	var d2_offset             = waterElement.offset();
+// 	var d2_height             = waterElement.outerHeight( true );
+// 	var d2_width              = waterElement.outerWidth( true );
+// 	var d2_distance_from_top  = d2_offset.top + d2_height;
+// 	var d2_distance_from_left = d2_offset.left + d2_width;
+//
+// 	var not_colliding = ( d1_distance_from_top < d2_offset.top || d1_offset.top > d2_distance_from_top || d1_distance_from_left < d2_offset.left || d1_offset.left > d2_distance_from_left );
+//
+// 	// Return whether it IS colliding
+// 	return ! not_colliding;
+// };
+
+
+function isCollapsed(frog, deadlyObject){
+    let object_1 = frog.getBoundingClientRect();
+    let object_2 = deadlyObject.getBoundingClientRect();
+
+    if (object_1.left < object_2.left + object_2.width  && object_1.left + object_1.width  > object_2.left &&
+		object_1.top < object_2.top + object_2.height && object_1.top + object_1.height > object_2.top) {
+        return true
+    }
+    return false
+}
