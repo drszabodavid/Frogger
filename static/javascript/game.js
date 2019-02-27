@@ -1,6 +1,4 @@
-// document.getElementById("myButton").onclick = function () {
-//     location.href = "game";
-// };
+
 
 let createCell = function(classname){
     return `<div class="${classname}"></div>`;
@@ -37,7 +35,6 @@ function createUpperRow(length) {
 }
 
 function createMap () {
-
     createUpperRow(11);
     for (let j = 0; j < 5; j++) {
         createMapRow(waterElement, 11, j);
@@ -74,7 +71,6 @@ function LogMove(logname, startposition, speed) {
     }
   }
 }
-
 function LogMoveReversed(logname, startposition, speed) {
   var elem = document.getElementById(logname);
   var pos = startposition;
@@ -140,8 +136,6 @@ function move(event) {
         frog.style.right = horisontalPosition + "px";
     }
 }
-
-
 document.onkeydown = move;
 
 
