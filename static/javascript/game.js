@@ -108,10 +108,7 @@ function move(event) {
     if (event.which === 38) {
         verticalPosition += 50;
         if (verticalPosition >= 600) {
-            alert('WOHHOOO You successfully reached the swamp. Time for BREKK');
-            verticalPosition = 5;
-            horisontalPosition = 250;
-            frog.style.right = horisontalPosition + "px";
+            winCondition()
         }
         frog.style.bottom = verticalPosition + "px";
     }
@@ -136,6 +133,14 @@ function move(event) {
         }
         frog.style.right = horisontalPosition + "px";
     }
+}
+
+
+function winCondition() {
+    alert('WOHHOOO You successfully reached the swamp. Time for BREKK');
+    verticalPosition = 5;
+    horisontalPosition = 250;
+    frog.style.right = horisontalPosition + "px";
 }
 
 
