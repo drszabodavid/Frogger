@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Frogger</title>
-    <script type="text/javascript" src="{{ url_for('static', filename='javascript/game.js') }}" defer></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <button id="myButton" class="float-left submit-button" >Home</button>
+<button id="myButton" class="float-left submit-button">Home</button>
+<script>
+    document.getElementById("myButton").onclick = function () {
+        location.href = "game";
+    };
+</script>
 </body>
 </html>

@@ -1,6 +1,4 @@
-// document.getElementById("myButton").onclick = function () {
-//     location.href = "game";
-// };
+
 
 let createCell = function(classname){
     return `<div class="${classname}"></div>`;
@@ -37,7 +35,6 @@ function createUpperRow(length) {
 }
 
 function createMap () {
-
     createUpperRow(11);
     for (let j = 0; j < 5; j++) {
         createMapRow(waterElement, 11, j);
@@ -59,7 +56,7 @@ function createMap () {
     }
 }
 
-function LogMove(logname, startposition, speed) {
+function ElementMove(logname, startposition, speed) {
   var elem = document.getElementById(logname);
   var pos = startposition;
   var id = setInterval(frame, speed);
@@ -70,12 +67,11 @@ function LogMove(logname, startposition, speed) {
       pos++;
       elem.style.right = pos + "px";
       if (pos === 550)
-          LogMove(logname, startposition, speed)
+          ElementMove(logname, startposition, speed)
     }
   }
 }
-
-function LogMoveReversed(logname, startposition, speed) {
+function ElementMoveReversed(logname, startposition, speed) {
   var elem = document.getElementById(logname);
   var pos = startposition;
   var id = setInterval(frame, speed);
@@ -86,7 +82,7 @@ function LogMoveReversed(logname, startposition, speed) {
       pos++;
       elem.style.left = pos + "px";
       if (pos === 700)
-          LogMoveReversed(logname, startposition, speed)
+          ElementMoveReversed(logname, startposition, speed)
     }
   }
 }
@@ -94,15 +90,25 @@ function LogMoveReversed(logname, startposition, speed) {
 createMap();
 let waterTiles = document.getElementsByClassName("game-cell-water");
 
-
-LogMove("ThreeLongLog", -900, 12);
-LogMove("ThreeLongLog2", -450, 12);
-LogMove("ThreeLongLog3", -200, 12);
-LogMove("FourLongLog", -200, 15, );
-LogMove("FourLongLog2", -700, 15, );
-LogMoveReversed("ThreeLongLogReversed", -300, 10)
-LogMoveReversed("ThreeLongLogReversed2", -600, 10)
-
+ElementMove("ThreeLongLog", -900, 12);
+ElementMove("ThreeLongLog2", -450, 12);
+ElementMove("ThreeLongLog3", -200, 12);
+ElementMove("FourLongLog", -200, 15, );
+ElementMove("FourLongLog2", -700, 15, );
+ElementMoveReversed("ThreeLongLogReversed", -300, 10);
+ElementMoveReversed("ThreeLongLogReversed2", -450, 10);
+ElementMoveReversed("ThreeLongLogReversed7", -450, 10);
+ElementMoveReversed("ThreeLongLogReversed3", -200, 10);
+ElementMoveReversed("ThreeLongLogReversed4", -450, 10);
+ElementMoveReversed("ThreeLongLogReversed5", -800, 10);
+ElementMoveReversed("ThreeLongLogReversed6", -1000, 10);
+ElementMoveReversed("FourLongLog4", -500, 20);
+ElementMoveReversed("FourLongLog5", -200, 20);
+ElementMoveReversed("truckCar", -200, 15);
+ElementMoveReversed("fireCar", -300, 10);
+ElementMove("greenCar", -700, -3);
+ElementMoveReversed("blueCarReversed", -100, 10);
+ElementMove("yellowCar", -300, 3);
 
 function move(event) {
     if (event.which === 38) {
@@ -146,8 +152,6 @@ function winCondition() {
     horisontalPosition = 250;
     frog.style.right = horisontalPosition + "px";
 }
-
-
 document.onkeydown = move;
 
 
