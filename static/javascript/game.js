@@ -151,37 +151,12 @@ function winCondition() {
 document.onkeydown = move;
 
 
-// ##################################################### COLLIDE #################################################### //
-
-
 function dieCondition() {
     alert("PFFF! What kind of frog you are?! Can't you swim?! Nooob!");
     verticalPosition = 5;
     horisontalPosition = 250;
     frog.style.right = horisontalPosition + "px";
 }
-
-
-// var is_colliding = function( frog, waterElement ) {
-// 	// Div 1 data
-// 	var d1_offset             = frog.offset();
-// 	var d1_height             = frog.outerHeight( true );
-// 	var d1_width              = frog.outerWidth( true );
-// 	var d1_distance_from_top  = d1_offset.top + d1_height;
-// 	var d1_distance_from_left = d1_offset.left + d1_width;
-//
-// 	// Div 2 data
-// 	var d2_offset             = waterElement.offset();
-// 	var d2_height             = waterElement.outerHeight( true );
-// 	var d2_width              = waterElement.outerWidth( true );
-// 	var d2_distance_from_top  = d2_offset.top + d2_height;
-// 	var d2_distance_from_left = d2_offset.left + d2_width;
-//
-// 	var not_colliding = ( d1_distance_from_top < d2_offset.top || d1_offset.top > d2_distance_from_top || d1_distance_from_left < d2_offset.left || d1_offset.left > d2_distance_from_left );
-//
-// 	// Return whether it IS colliding
-// 	return ! not_colliding;
-// };
 
 
 function isCollapsed(frog, deadlyObject){
