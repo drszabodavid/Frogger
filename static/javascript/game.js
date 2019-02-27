@@ -101,8 +101,14 @@ LogMove("ThreeLongLog3", -200, 12);
 LogMove("FourLongLog", -200, 15, );
 LogMove("FourLongLog2", -700, 15, );
 LogMoveReversed("ThreeLongLogReversed", -300, 10)
-LogMoveReversed("ThreeLongLogReversed2", -600, 10)
-
+LogMoveReversed("ThreeLongLogReversed2", -450, 10)
+LogMoveReversed("ThreeLongLogReversed7", -450, 10)
+LogMoveReversed("ThreeLongLogReversed3", -200, 10)
+LogMoveReversed("ThreeLongLogReversed4", -450, 10)
+LogMoveReversed("ThreeLongLogReversed5", -800, 10)
+LogMoveReversed("ThreeLongLogReversed6", -1000, 10)
+LogMoveReversed("FourLongLog4", -500, 20)
+LogMoveReversed("FourLongLog5", -200, 20)
 
 function move(event) {
     if (event.which === 38) {
