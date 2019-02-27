@@ -7,6 +7,9 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <form action="{{ url_for('run_game') }}">
+        <button class="float-left submit-button">Play</button>
+    </form>
     <button id="myButton" class="float-left submit-button" >Home</button>
 </body>
 </html>
