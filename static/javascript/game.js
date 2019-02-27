@@ -15,8 +15,8 @@ const MainRoadElement = createCell('game-cell-road2');
 const frog = document.getElementById('frog');
 const ThreeLongLog = document.getElementById('ThreeLongLog');
 const gameField = document.getElementById('game-field');
-var verticalPosition = 55;
-var horisontalPosition = 300;
+var verticalPosition = 5;
+var horisontalPosition = 250;
 
 
 function createMapRow(type, length, j) {
@@ -107,28 +107,28 @@ LogMoveReversed("ThreeLongLogReversed2", -600, 10)
 function move(event) {
     if (event.which === 38) {
         verticalPosition += 50;
-        if (verticalPosition >= 650) {
+        if (verticalPosition >= 600) {
             verticalPosition -= 50
         }
         frog.style.bottom = verticalPosition + "px";
     }
     else if (event.which === 40) {
         verticalPosition -= 50;
-        if (verticalPosition <= 5) {
+        if (verticalPosition <= -45) {
             verticalPosition += 50
         }
         frog.style.bottom = verticalPosition + "px";
     }
     else if (event.which === 37) {
         horisontalPosition+= 50;
-        if (horisontalPosition >= 600) {
+        if (horisontalPosition >= 550) {
             horisontalPosition -= 50
         }
         frog.style.right = horisontalPosition + "px";
     }
     else if (event.which === 39) {
         horisontalPosition-= 50;
-        if (horisontalPosition <= 0) {
+        if (horisontalPosition <= -50) {
             horisontalPosition += 50
         }
         frog.style.right = horisontalPosition + "px";
