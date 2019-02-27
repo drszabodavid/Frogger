@@ -108,7 +108,10 @@ function move(event) {
     if (event.which === 38) {
         verticalPosition += 50;
         if (verticalPosition >= 600) {
-            verticalPosition -= 50
+            alert('WOHHOOO You successfully reached the swamp. Time for BREKK');
+            verticalPosition = 5;
+            horisontalPosition = 250;
+            frog.style.right = horisontalPosition + "px";
         }
         frog.style.bottom = verticalPosition + "px";
     }
@@ -137,7 +140,3 @@ function move(event) {
 
 
 document.onkeydown = move;
-
-
-
-
