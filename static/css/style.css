@@ -6,6 +6,11 @@
     text-align: center;
     color: #222;
 }
+
+h1 {
+    color: darkseagreen;
+}
+
 .game-cell-swamp {
     display: table-cell;
     width: 50px;
@@ -67,8 +72,8 @@
 }
 
 #frog {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-image: url("/static/images/frog.png");
     position: absolute;
     bottom:0px;
@@ -81,14 +86,14 @@
 
 #fly {
     display: table-cell;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     font-size: 35px;
     text-align: center;
     position: absolute;
     visibility: visible;
-    bottom:550px;
-    right:250px;
+    bottom:570px;
+    right:255px;
     background-image: url("/static/images/fly.png");
 }
 
