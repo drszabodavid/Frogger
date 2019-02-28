@@ -1,4 +1,4 @@
-let createCell = function(classname){
+let createCell = function (classname) {
     return `<div class="${classname}"></div>`;
 };
 
@@ -10,7 +10,7 @@ const sideRoadElement = createCell('game-cell-road');
 const MainRoadElement = createCell('game-cell-road2');
 const frog = document.getElementById('frog');
 const ThreeLongLog = document.getElementById('ThreeLongLog');
-const gameField = document.getElementById('game-field');
+const fly = document.getElementById('fly');
 var verticalPosition = 0;
 var horisontalPosition = 250;
 var died = false;
@@ -23,17 +23,17 @@ function createMapRow(type, length, j) {
 }
 
 function createUpperRow(length) {
-    for (let i = 1; i < length+1; i++) {
-         if (i % 2 === 0) {
-          document.getElementById('upperRow').innerHTML += swampElement;
-         }
+    for (let i = 1; i < length + 1; i++) {
+        if (i % 2 === 0) {
+            document.getElementById('upperRow').innerHTML += swampElement;
+        }
         if (i % 2 === 1) {
-          document.getElementById('upperRow').innerHTML += grassElement;
-         }
+            document.getElementById('upperRow').innerHTML += grassElement;
+        }
     }
 }
 
-function createMap () {
+function createMap() {
     createUpperRow(11);
     for (let j = 0; j < 5; j++) {
         createMapRow(waterElement, 11, j);
@@ -99,8 +99,8 @@ let carTiles = document.getElementsByClassName("car");
 ElementMove("ThreeLongLog", -900, 12);
 ElementMove("ThreeLongLog2", -450, 12);
 ElementMove("ThreeLongLog3", -200, 12);
-ElementMove("FourLongLog", -200, 15, );
-ElementMove("FourLongLog2", -700, 15, );
+ElementMove("FourLongLog", -200, 15,);
+ElementMove("FourLongLog2", -700, 15,);
 ElementMoveReversed("ThreeLongLogReversed", -300, 10);
 ElementMoveReversed("ThreeLongLogReversed2", -450, 10);
 ElementMoveReversed("ThreeLongLogReversed7", -450, 10);
@@ -125,31 +125,38 @@ function move(event) {
         }
         frog.style.bottom = verticalPosition + "px";
         frog.style.transform = "rotate(0deg)";
-    }
-    else if (event.which === 40) {
+        if (isCollapsed(frog, fly)) {
+            winCondition()
+        }
+    } else if (event.which === 40) {
         verticalPosition -= 50;
         if (verticalPosition <= -50) {
             verticalPosition += 50
         }
         frog.style.bottom = verticalPosition + "px";
         frog.style.transform = "rotate(180deg)";
-    }
-    else if (event.which === 37) {
-        horisontalPosition+= 50;
+    } else if (event.which === 37) {
+        horisontalPosition += 50;
         if (horisontalPosition >= 550) {
             horisontalPosition -= 50
         }
         frog.style.right = horisontalPosition + "px";
         frog.style.transform = "rotate(-90deg)";
-    }
-    else if (event.which === 39) {
-        horisontalPosition-= 50;
+        if (isCollapsed(frog, fly)) {
+            winCondition()
+        }
+    } else if (event.which === 39) {
+        horisontalPosition -= 50;
         if (horisontalPosition <= -50) {
             horisontalPosition += 50
         }
         frog.style.right = horisontalPosition + "px";
         frog.style.transform = "rotate(90deg)";
+        if (isCollapsed(frog, fly)) {
+            winCondition()
+        }
     }
+
     for (let water of waterTiles) {
         if (isCollapsed(frog, water)) {
             died = true;
@@ -207,12 +214,12 @@ function carCrashCheck() {
 }
 
 
-function isCollapsed(frog, deadlyObject){
+function isCollapsed(frog, deadlyObject) {
     let object_1 = frog.getBoundingClientRect();
     let object_2 = deadlyObject.getBoundingClientRect();
 
-    if (object_1.left < object_2.left + object_2.width  && object_1.left + object_1.width  > object_2.left &&
-		object_1.top < object_2.top + object_2.height && object_1.top + object_1.height > object_2.top) {
+    if (object_1.left < object_2.left + object_2.width && object_1.left + object_1.width > object_2.left &&
+        object_1.top < object_2.top + object_2.height && object_1.top + object_1.height > object_2.top) {
         return true
     }
     return false
