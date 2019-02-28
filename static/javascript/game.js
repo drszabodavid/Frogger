@@ -170,8 +170,8 @@ function move(event) {
 
 
 function winCondition() {
-    alert('WOHHOOO You successfully reached the swamp. Time for BREKK');
-    verticalPosition = 5;
+    alert('WOHHOOO You successfully get your meal. Time for BREKK');
+    verticalPosition = 0;
     horisontalPosition = 250;
     frog.style.right = horisontalPosition + "px";
     frog.style.bottom = verticalPosition + "px";
