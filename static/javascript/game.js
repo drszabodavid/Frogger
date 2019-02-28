@@ -111,12 +111,14 @@ ElementMoveReversed("blueCarReversed", -100, 10);
 ElementMove("yellowCar", -300, 3);
 
 function move(event) {
-    if (event.which === 38) {
+    let rotation = 0;
+    if (event.which === 38)  {
         verticalPosition += 50;
         if (verticalPosition >= 600) {
             verticalPosition -= 50
         }
         frog.style.bottom = verticalPosition + "px";
+        frog.style.transform = "rotate(0deg)";
     }
     else if (event.which === 40) {
         verticalPosition -= 50;
@@ -124,6 +126,7 @@ function move(event) {
             verticalPosition += 50
         }
         frog.style.bottom = verticalPosition + "px";
+        frog.style.transform = "rotate(180deg)";
     }
     else if (event.which === 37) {
         horisontalPosition+= 50;
@@ -131,6 +134,7 @@ function move(event) {
             horisontalPosition -= 50
         }
         frog.style.right = horisontalPosition + "px";
+        frog.style.transform = "rotate(-90deg)";
     }
     else if (event.which === 39) {
         horisontalPosition-= 50;
@@ -138,6 +142,7 @@ function move(event) {
             horisontalPosition += 50
         }
         frog.style.right = horisontalPosition + "px";
+        frog.style.transform = "rotate(90deg)";
     }
 }
 document.onkeydown = move;
