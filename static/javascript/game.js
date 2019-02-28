@@ -1,5 +1,3 @@
-
-
 let createCell = function(classname){
     return `<div class="${classname}"></div>`;
 };
@@ -13,8 +11,9 @@ const MainRoadElement = createCell('game-cell-road2');
 const frog = document.getElementById('frog');
 const ThreeLongLog = document.getElementById('ThreeLongLog');
 const gameField = document.getElementById('game-field');
-var verticalPosition = 5;
+var verticalPosition = 0;
 var horisontalPosition = 250;
+var died = false;
 
 
 function createMapRow(type, length, j) {
@@ -57,37 +56,44 @@ function createMap () {
 }
 
 function ElementMove(logname, startposition, speed) {
-  var elem = document.getElementById(logname);
-  var pos = startposition;
-  var id = setInterval(frame, speed);
-  function frame() {
-    if (pos === 550) {
-      clearInterval(id);
-    } else {
-      pos++;
-      elem.style.right = pos + "px";
-      if (pos === 550)
-          ElementMove(logname, startposition, speed)
+    var elem = document.getElementById(logname);
+    var pos = startposition;
+    var id = setInterval(frame, speed);
+
+    function frame() {
+        if (pos === 550) {
+            clearInterval(id);
+        } else {
+            pos++;
+            elem.style.right = pos + "px";
+            if (pos === 550)
+                ElementMove(logname, startposition, speed)
+        }
     }
-  }
 }
+
+
 function ElementMoveReversed(logname, startposition, speed) {
-  var elem = document.getElementById(logname);
-  var pos = startposition;
-  var id = setInterval(frame, speed);
-  function frame() {
-    if (pos === 700) {
-      clearInterval(id);
-    } else {
-      pos++;
-      elem.style.left = pos + "px";
-      if (pos === 700)
-          ElementMoveReversed(logname, startposition, speed)
+    var elem = document.getElementById(logname);
+    var pos = startposition;
+    var id = setInterval(frame, speed);
+
+    function frame() {
+        if (pos === 700) {
+            clearInterval(id);
+        } else {
+            pos++;
+            elem.style.left = pos + "px";
+            if (pos === 700)
+                ElementMoveReversed(logname, startposition, speed)
+        }
     }
-  }
 }
 
 createMap();
+let waterTiles = document.getElementsByClassName("game-cell-water");
+let logTiles = document.getElementsByClassName("log");
+let carTiles = document.getElementsByClassName("car");
 
 
 ElementMove("ThreeLongLog", -900, 12);
@@ -110,9 +116,9 @@ ElementMove("greenCar", -700, -3);
 ElementMoveReversed("blueCarReversed", -100, 10);
 ElementMove("yellowCar", -300, 3);
 
+
 function move(event) {
-    let rotation = 0;
-    if (event.which === 38)  {
+    if (event.which === 38) {
         verticalPosition += 50;
         if (verticalPosition >= 600) {
             verticalPosition -= 50
@@ -122,7 +128,7 @@ function move(event) {
     }
     else if (event.which === 40) {
         verticalPosition -= 50;
-        if (verticalPosition <= -45) {
+        if (verticalPosition <= -50) {
             verticalPosition += 50
         }
         frog.style.bottom = verticalPosition + "px";
@@ -144,9 +150,75 @@ function move(event) {
         frog.style.right = horisontalPosition + "px";
         frog.style.transform = "rotate(90deg)";
     }
+    for (let water of waterTiles) {
+        if (isCollapsed(frog, water)) {
+            died = true;
+            break
+        }
+    }
+    for (let log of logTiles) {
+        if (isCollapsed(frog, log)) {
+            died = false;
+            break
+        }
+    }
+    if (died) {
+        dieCondition();
+        died = false;
+    }
 }
+
+
+function winCondition() {
+    alert('WOHHOOO You successfully reached the swamp. Time for BREKK');
+    verticalPosition = 0;
+    horisontalPosition = 250;
+    frog.style.right = horisontalPosition + "px";
+    frog.style.bottom = verticalPosition + "px";
+}
+
+
 document.onkeydown = move;
 
 
+function dieCondition() {
+    alert("You died");
+    verticalPosition = 0;
+    horisontalPosition = 250;
+    frog.style.right = horisontalPosition + "px";
+    frog.style.bottom = verticalPosition + "px";
+}
+
+
+function carCrashCheck() {
+    setTimeout(function () {
+        for (let car of carTiles) {
+            if (isCollapsed(frog, car)) {
+                died = true;
+                break
+            }
+        }
+        if (died) {
+            dieCondition();
+            died = false;
+        }
+        carCrashCheck();
+    }, 500)
+}
+
+
+function isCollapsed(frog, deadlyObject){
+    let object_1 = frog.getBoundingClientRect();
+    let object_2 = deadlyObject.getBoundingClientRect();
+
+    if (object_1.left < object_2.left + object_2.width  && object_1.left + object_1.width  > object_2.left &&
+		object_1.top < object_2.top + object_2.height && object_1.top + object_1.height > object_2.top) {
+        return true
+    }
+    return false
+}
+
+
+carCrashCheck();
 
 
