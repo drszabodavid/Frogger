@@ -121,27 +121,34 @@ function move(event) {
     if (event.which === 38) {
         verticalPosition += 50;
         if (verticalPosition >= 600) {
-            winCondition()
+            verticalPosition -= 50
         }
         frog.style.bottom = verticalPosition + "px";
-    } else if (event.which === 40) {
+        frog.style.transform = "rotate(0deg)";
+    }
+    else if (event.which === 40) {
         verticalPosition -= 50;
         if (verticalPosition <= -45) {
             verticalPosition += 50
         }
         frog.style.bottom = verticalPosition + "px";
-    } else if (event.which === 37) {
-        horisontalPosition += 50;
+        frog.style.transform = "rotate(180deg)";
+    }
+    else if (event.which === 37) {
+        horisontalPosition+= 50;
         if (horisontalPosition >= 550) {
             horisontalPosition -= 50
         }
         frog.style.right = horisontalPosition + "px";
-    } else if (event.which === 39) {
-        horisontalPosition -= 50;
+        frog.style.transform = "rotate(-90deg)";
+    }
+    else if (event.which === 39) {
+        horisontalPosition-= 50;
         if (horisontalPosition <= -50) {
             horisontalPosition += 50
         }
         frog.style.right = horisontalPosition + "px";
+        frog.style.transform = "rotate(90deg)";
     }
     for (let water of waterTiles) {
         if (isCollapsed(frog, water)) {
