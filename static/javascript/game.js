@@ -1,5 +1,3 @@
-
-
 let createCell = function(classname){
     return `<div class="${classname}"></div>`;
 };
@@ -15,6 +13,7 @@ const ThreeLongLog = document.getElementById('ThreeLongLog');
 const gameField = document.getElementById('game-field');
 var verticalPosition = 5;
 var horisontalPosition = 250;
+var died = false;
 
 
 function createMapRow(type, length, j) {
@@ -57,38 +56,45 @@ function createMap () {
 }
 
 function ElementMove(logname, startposition, speed) {
-  var elem = document.getElementById(logname);
-  var pos = startposition;
-  var id = setInterval(frame, speed);
-  function frame() {
-    if (pos === 550) {
-      clearInterval(id);
-    } else {
-      pos++;
-      elem.style.right = pos + "px";
-      if (pos === 550)
-          ElementMove(logname, startposition, speed)
+    var elem = document.getElementById(logname);
+    var pos = startposition;
+    var id = setInterval(frame, speed);
+
+    function frame() {
+        if (pos === 550) {
+            clearInterval(id);
+        } else {
+            pos++;
+            elem.style.right = pos + "px";
+            if (pos === 550)
+                ElementMove(logname, startposition, speed)
+        }
     }
-  }
 }
+
+
 function ElementMoveReversed(logname, startposition, speed) {
-  var elem = document.getElementById(logname);
-  var pos = startposition;
-  var id = setInterval(frame, speed);
-  function frame() {
-    if (pos === 700) {
-      clearInterval(id);
-    } else {
-      pos++;
-      elem.style.left = pos + "px";
-      if (pos === 700)
-          ElementMoveReversed(logname, startposition, speed)
+    var elem = document.getElementById(logname);
+    var pos = startposition;
+    var id = setInterval(frame, speed);
+
+    function frame() {
+        if (pos === 700) {
+            clearInterval(id);
+        } else {
+            pos++;
+            elem.style.left = pos + "px";
+            if (pos === 700)
+                ElementMoveReversed(logname, startposition, speed)
+        }
     }
-  }
 }
 
 createMap();
 let waterTiles = document.getElementsByClassName("game-cell-water");
+let logTiles = document.getElementsByClassName("log");
+let carTiles = document.getElementsByClassName("car");
+
 
 ElementMove("ThreeLongLog", -900, 12);
 ElementMove("ThreeLongLog2", -450, 12);
@@ -109,6 +115,7 @@ ElementMoveReversed("fireCar", -300, 10);
 ElementMove("greenCar", -700, -3);
 ElementMoveReversed("blueCarReversed", -100, 10);
 ElementMove("yellowCar", -300, 3);
+
 
 function move(event) {
     if (event.which === 38) {
@@ -136,12 +143,21 @@ function move(event) {
         }
         frog.style.right = horisontalPosition + "px";
     }
-    console.log("moved");
     for (let water of waterTiles) {
         if (isCollapsed(frog, water)) {
-            console.log("colliding");
-            dieCondition()
+            died = true;
+            break
         }
+    }
+    for (let log of logTiles) {
+        if (isCollapsed(frog, log)) {
+            died = false;
+            break
+        }
+    }
+    if (died) {
+        dieCondition();
+        died = false;
     }
 }
 
@@ -151,15 +167,36 @@ function winCondition() {
     verticalPosition = 5;
     horisontalPosition = 250;
     frog.style.right = horisontalPosition + "px";
+    frog.style.bottom = verticalPosition + "px";
 }
+
+
 document.onkeydown = move;
 
 
 function dieCondition() {
-    alert("PFFF! What kind of frog you are?! Can't you swim?! Nooob!");
+    alert("You died");
     verticalPosition = 5;
     horisontalPosition = 250;
     frog.style.right = horisontalPosition + "px";
+    frog.style.bottom = verticalPosition + "px";
+}
+
+
+function carCrashCheck() {
+    setTimeout(function () {
+        for (let car of carTiles) {
+            if (isCollapsed(frog, car)) {
+                died = true;
+                break
+            }
+        }
+        if (died) {
+            dieCondition();
+            died = false;
+        }
+        carCrashCheck();
+    }, 500)
 }
 
 
@@ -173,3 +210,8 @@ function isCollapsed(frog, deadlyObject){
     }
     return false
 }
+
+
+carCrashCheck();
+
+
