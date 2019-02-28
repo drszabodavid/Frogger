@@ -222,3 +222,16 @@ function isCollapsed(frog, deadlyObject){
 carCrashCheck();
 
 
+var id;
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function dragStart(ev) {
+    id=ev.target
+}
+
+function drop(ev) {
+    ev.target.append(document.getElementById(id));
+}

@@ -25,7 +25,9 @@
             <div id="row9"></div>
             <div id="row10"></div>
             <div id="row11"></div>
-            <div id="frog"></div>
+            <div id="frog" class="task">
+                <img src="static/images/frog.png" id="dragelement" ondragstart="dragStart(event)">
+            </div>
         </div>
         <div id="logs">
             <div class="log" id="ThreeLongLog" data-speed="12"></div>
@@ -50,7 +52,7 @@
             <div class = "car" id="yellowCar"></div>
         </div>
         <div id="death"></div>
-        <div id="fly"></div>
+        <div id="fly" class="drop" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
     </div>
 </div>
 
