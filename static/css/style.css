@@ -78,6 +78,33 @@
 #game {
     padding: 30px;
 }
+
+#fly {
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    position: absolute;
+    visibility: visible;
+    bottom:550px;
+    right:250px;
+    background-image: url("/static/images/fly.png");
+}
+
+#death {
+    display: table-cell;
+    width: 50px;
+    height: 50px;
+    font-size: 35px;
+    text-align: center;
+    position: absolute;
+    visibility: visible;
+    bottom:550px;
+    right:65px;
+    background-image: url("/static/images/death.png");
+}
+
 #ThreeLongLog {
     display: table-cell;
     width: 150px;
