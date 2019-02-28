@@ -11,7 +11,7 @@ const MainRoadElement = createCell('game-cell-road2');
 const frog = document.getElementById('frog');
 const ThreeLongLog = document.getElementById('ThreeLongLog');
 const gameField = document.getElementById('game-field');
-var verticalPosition = 5;
+var verticalPosition = 0;
 var horisontalPosition = 250;
 var died = false;
 
@@ -128,7 +128,7 @@ function move(event) {
     }
     else if (event.which === 40) {
         verticalPosition -= 50;
-        if (verticalPosition <= -45) {
+        if (verticalPosition <= -50) {
             verticalPosition += 50
         }
         frog.style.bottom = verticalPosition + "px";
@@ -183,7 +183,7 @@ document.onkeydown = move;
 
 function dieCondition() {
     alert("You died");
-    verticalPosition = 5;
+    verticalPosition = 0;
     horisontalPosition = 250;
     frog.style.right = horisontalPosition + "px";
     frog.style.bottom = verticalPosition + "px";

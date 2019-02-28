@@ -71,7 +71,7 @@
     height: 50px;
     background-image: url("/static/images/frog.png");
     position: absolute;
-    bottom:5px;
+    bottom:0px;
     right:250px;
     z-index:1000;
 }
