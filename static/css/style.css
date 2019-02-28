@@ -67,8 +67,8 @@
 }
 
 #frog {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-image: url("/static/images/frog.png");
     position: absolute;
     bottom:0px;
