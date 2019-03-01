@@ -2,14 +2,11 @@ let createCell = function (classname) {
     return `<div class="${classname}"></div>`;
 };
 
-const grassElement = createCell('game-cell-grass');
-const swampElement = createCell('game-cell-swamp');
 const waterElement = createCell('game-cell-water');
 const shoreElement = createCell('game-cell-shore');
 const sideRoadElement = createCell('game-cell-road');
 const MainRoadElement = createCell('game-cell-road2');
 const frog = document.getElementById('frog');
-const ThreeLongLog = document.getElementById('ThreeLongLog');
 const fly = document.getElementById('fly');
 var verticalPosition = 0;
 var horisontalPosition = 250;
@@ -23,6 +20,8 @@ function createMapRow(type, length, j) {
 }
 
 function createUpperRow(length) {
+    const grassElement = createCell('game-cell-grass');
+    const swampElement = createCell('game-cell-swamp');
     for (let i = 1; i < length + 1; i++) {
         if (i % 2 === 0) {
             document.getElementById('upperRow').innerHTML += swampElement;
@@ -66,8 +65,9 @@ function ElementMove(logname, startposition, speed) {
         } else {
             pos++;
             elem.style.right = pos + "px";
-            if (pos === 550)
+            if (pos === 550) {
                 ElementMove(logname, startposition, speed)
+            }
         }
     }
 }
@@ -118,43 +118,42 @@ ElementMove("yellowCar", -300, 3);
 
 
 function move(event) {
-    if (event.which === 38) {
+    const pressedChar = event.which;
+    const CHARS = {
+        UP: 38
+    };
+
+    if (pressedChar === CHARS.UP) {
         verticalPosition += 50;
         if (verticalPosition >= 600) {
             verticalPosition -= 50
         }
         frog.style.bottom = verticalPosition + "px";
         frog.style.transform = "rotate(0deg)";
-        if (isCollapsed(frog, fly)) {
-            winCondition()
-        }
-    } else if (event.which === 40) {
+    } else if (pressedChar === 40) {
         verticalPosition -= 50;
         if (verticalPosition <= -50) {
             verticalPosition += 50
         }
         frog.style.bottom = verticalPosition + "px";
         frog.style.transform = "rotate(180deg)";
-    } else if (event.which === 37) {
+    } else if (pressedChar === 37) {
         horisontalPosition += 50;
         if (horisontalPosition >= 550) {
             horisontalPosition -= 50
         }
         frog.style.right = horisontalPosition + "px";
         frog.style.transform = "rotate(-90deg)";
-        if (isCollapsed(frog, fly)) {
-            winCondition()
-        }
-    } else if (event.which === 39) {
+    } else if (pressedChar === 39) {
         horisontalPosition -= 50;
         if (horisontalPosition <= -50) {
             horisontalPosition += 50
         }
         frog.style.right = horisontalPosition + "px";
         frog.style.transform = "rotate(90deg)";
-        if (isCollapsed(frog, fly)) {
-            winCondition()
-        }
+    }
+    if (isCollapsed(frog, fly)) {
+        winCondition()
     }
 
     for (let water of waterTiles) {
@@ -198,7 +197,7 @@ function dieCondition() {
 
 
 function carCrashCheck() {
-    setTimeout(function () {
+    const checkCrash = function () {
         for (let car of carTiles) {
             if (isCollapsed(frog, car)) {
                 died = true;
@@ -210,7 +209,8 @@ function carCrashCheck() {
             died = false;
         }
         carCrashCheck();
-    }, 400)
+    };
+    setTimeout(checkCrash, 400);
 }
 
 
@@ -218,11 +218,10 @@ function isCollapsed(frog, deadlyObject) {
     let object_1 = frog.getBoundingClientRect();
     let object_2 = deadlyObject.getBoundingClientRect();
 
-    if (object_1.left < object_2.left + object_2.width && object_1.left + object_1.width > object_2.left &&
-        object_1.top < object_2.top + object_2.height && object_1.top + object_1.height > object_2.top) {
-        return true
-    }
-    return false
+    return object_1.left < object_2.left + object_2.width &&
+           object_1.left + object_1.width > object_2.left &&
+           object_1.top < object_2.top + object_2.height &&
+           object_1.top + object_1.height > object_2.top;
 }
 
 
