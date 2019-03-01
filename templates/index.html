@@ -5,12 +5,10 @@
     <title>Frogger</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-<button id="myButton" class="float-left submit-button">Home</button>
-<script>
-    document.getElementById("myButton").onclick = function () {
-        location.href = "game";
-    };
-</script>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<body background="static/images/frigger.bg.jpeg">
+    <form id="mid" action="{{ url_for('run_game') }}">
+        <button class="start-btn">START</button>
+    </form>
 </body>
 </html>

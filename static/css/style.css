@@ -357,3 +357,36 @@ h1 {
     right: 450px;
     background-image: url('/static/images/blueCar.png');
 }
+
+@font-face {
+  font-family: 'Press Start 2p';
+}
+
+.start-btn{
+    text-align: center;
+	display: inline-block;
+	margin:5px;
+    font-weight: bold;
+    padding: 10px 0 10px 10px ;
+    background-color: lightgreen;
+    text-shadow: -1px -1px black, 1px 1px white;
+    color: green;
+    -webkit-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-o-border-radius: 7px;
+	border-radius: 7px;
+    box-shadow: 0 .2em darkgreen;
+    cursor: pointer;
+    width: 150px;
+    height:70px;
+
+}
+.video-game-button:active, .start-btn:active {
+	box-shadow: none;
+	position: center;
+	top: .2em;
+}
+
+#mid {
+    text-align: center;
+}

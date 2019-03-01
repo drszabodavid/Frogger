@@ -177,7 +177,7 @@ function move(event) {
 
 
 function winCondition() {
-    alert('WOHHOOO You successfully reached the swamp. Time for BREKK');
+    alert('WOHHOOO You successfully ate the fly!! Time for BREKK');
     verticalPosition = 0;
     horisontalPosition = 250;
     frog.style.right = horisontalPosition + "px";
@@ -210,7 +210,7 @@ function carCrashCheck() {
             died = false;
         }
         carCrashCheck();
-    }, 500)
+    }, 400)
 }
 
 
@@ -240,5 +240,31 @@ function dragStart(ev) {
 }
 
 function drop(ev) {
-    ev.target.append(document.getElementById(id));
+    winCondition()
+    //alert(id)
+    //ev.target.append(document.getElementById(id));
 }
+
+
+var h1 = document.getElementsByTagName('h1')[0],
+    seconds = 0, minutes = 0,
+    t;
+
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+        }
+    }
+
+    h1.textContent = (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "0") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+}
+function timer() {
+    t = setTimeout(add, 1000);
+}
+timer();
