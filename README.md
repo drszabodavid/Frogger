@@ -1,2 +1,2 @@
 # Frogger
-Week 4 JS game
+Copy of the famous Frogger game using Javascript.
