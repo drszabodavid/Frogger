@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <h1></h1>
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/game.js') }}" defer></script>
+    <script src="jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body style="background: darkolivegreen">
+<h1>Frogger</h1>
+<div id="game">
+    <div id="game-field">
+        <div id="fieldElements" class="drop" ondragover="allowDrop(event)" ondrop="drop(event)">
+            <div id="upperRow"></div>
+            <div id="row0"></div>
+            <div id="row1" 1></div>
+            <div id="row2"></div>
+            <div id="row3"></div>
+            <div id="row4"></div>
+            <div id="row5"></div>
+            <div id="row6"></div>
+            <div id="row7"></div>
+            <div id="row8"></div>
+            <div id="row9"></div>
+            <div id="row10"></div>
+            <div id="row11"></div>
+            <div id="frog" class="drag_obj">
+                <img id="fro" src="static/images/frog.png" ondragstart="dragStart(event)">
+            </div>
+        </div>
+        <div id="logs">
+            <div class="log" id="ThreeLongLog" data-speed="12"></div>
+            <div class="log" id="ThreeLongLog2" data-speed="12"></div>
+            <div class="log" id="ThreeLongLog3" data-speed="12"></div>
+            <div class="log" id="FourLongLog" data-speed="15"></div>
+            <div class="log" id="FourLongLog2" data-speed="15"></div>
+            <div class="log" id="ThreeLongLogReversed" data-speed="10"></div>
+            <div class="log" id="ThreeLongLogReversed2" data-speed="10"></div>
+            <div class="log" id="ThreeLongLogReversed3" data-speed="10"></div>
+            <div class="log" id="ThreeLongLogReversed4" data-speed="10"></div>
+            <div class="log" id="ThreeLongLogReversed5" data-speed="10"></div>
+            <div class="log" id="ThreeLongLogReversed6" data-speed="10"></div>
+            <div class="log" id="FourLongLog4" data-speed="20"></div>
+            <div class="log" id="FourLongLog5" data-speed="20"></div>
+        </div>
+        <div id="cars">
+            <div class = "car" id="truckCar"></div>
+            <div class = "car" id="fireCar"></div>
+            <div class = "car" id="blueCarReversed"></div>
+            <div class = "car" id="greenCar"></div>
+            <div class = "car" id="yellowCar"></div>
+        </div>
+        <div id="death"></div>
+        <div id="fly" class="drop" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+    </div>
+</div>
+
+</body>
+</html>

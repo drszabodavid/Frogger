@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Frogger</title>
-    <script type="text/javascript" src="{{ url_for('static', filename='javascript/game.js') }}" defer></script>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-    <h1>Frogger</h1>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<body background="static/images/frigger.bg.jpeg">
+    <form id="mid" action="{{ url_for('run_game') }}">
+        <button class="start-btn">START</button>
+    </form>
 </body>
 </html>
